@@ -25,7 +25,10 @@ test('Renders <App /> Component', () => {
 
 test('Renders <Users /> Component', () => {
   const props = {
-    usersList: userData
+    usersList: userData,
+    selectedUser: "",
+    updateUsersList: jest.fn(),
+    updateSelectedUser: jest.fn()
   }
 
   const wrapper = shallow(
@@ -37,7 +40,11 @@ test('Renders <Users /> Component', () => {
 
 test('Renders <Hobbies /> Component', () => {
   const props = {
-    hobbiesList: hobbiesData
+    selectedUser: "PPBqWA1",
+    hobbiesList: hobbiesData,
+    updateHobbiesList: jest.fn(),
+    addNewHobby: jest.fn(),
+    updateSelectedHobby: jest.fn(),
   }
 
   const wrapper = shallow(
