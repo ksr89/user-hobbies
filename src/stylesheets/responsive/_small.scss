@@ -1,0 +1,22 @@
+&.small {
+  /* add responisve related style here */
+
+  .users-hobbies-container {
+    flex-direction: column;
+    height: 100%;
+
+    .users-container {
+      width: 100%;
+      min-width: 100%;
+      max-height: 247px;
+    }
+  }
+}
+
+&.small.landscape {
+  /* add responisve related style here */
+}
+
+&.small.portrait {
+  /* add responisve related style here */
+}
