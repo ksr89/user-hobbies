@@ -1,12 +1,12 @@
 import React from 'react';
-import { shallow, configure, mount } from "enzyme";
+import { configure } from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { act } from "react-dom/test-utils";
 
 import Users from '../components/Users';
 
-import { userData } from '../data'
+import { userData } from '../data';
 
 configure({ adapter: new Adapter() });
 
@@ -47,31 +47,23 @@ describe('<Users /> component', () => {
     updateSelectedUser: jest.fn()
   }
 
-  beforeEach(() => {
-    wrapper = render(<Users {...props} />)
-  });
+  afterEach(() => wrapper.unmount())
 
   it('Renders <Users /> Component', () => {
-    const props = {
-      usersList: userData,
-      selectedUser: "",
-      updateUsersList: jest.fn(),
-      updateSelectedUser: jest.fn()
-    }
-  
-    const wrapper = shallow(
-      <Users {...props} />
-    );
-  
-    expect(wrapper.find(".user-add-form")).toHaveLength(1);
+    wrapper = render(<Users {...props} />)
+    fireEvent.change(wrapper.getByPlaceholderText("Enter user name"), { target: { value: 'Text' } })
+    expect(wrapper.getByPlaceholderText("Enter user name").value).toEqual("Text");
   });
 
   it('Validate add new user form', async () => {
+    wrapper = render(<Users {...props} />)
     fireEvent.change(wrapper.getByPlaceholderText("Enter user name"), { target: { value: 'Text' } })
     fireEvent.click(wrapper.getByText("Add"))
 
     await act(async () => {
-      render(<Users {...props} />);
+      
     });
+
+    expect(wrapper.getByPlaceholderText("Enter user name").value).toEqual('');
   })
 })
