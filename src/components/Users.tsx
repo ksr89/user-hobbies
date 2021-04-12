@@ -13,19 +13,25 @@ const Users = (props: UsersProps) => {
 
   const [newUserName, setNewUserName] = useState<string>('');
 
+  async function fetchUserData() {
+    const response = await getUsers();
+    props.updateUsersList(response);
+  }
+
+  async function addNewUser(name: string) {
+    const response = await addUser(name);
+    props.updateUsersList([response]);
+    setNewUserName('');
+  }
+
   useEffect(() => {
-    getUsers().then((data) => {
-      props.updateUsersList(data);
-    })
+    fetchUserData()
   }, [])
 
   const userAddFormHandleSubmit = (event: any) => {
     event.preventDefault();
     if (newUserName) {
-      addUser(newUserName).then((data) => {
-        props.updateUsersList([data]);
-        setNewUserName('');
-      })
+      addNewUser(newUserName)
     }
   }
 

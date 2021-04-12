@@ -15,7 +15,7 @@ export const addUser = (name: string) => {
     body: JSON.stringify({ name }),
     headers: { 'Content-Type': 'application/json' },
   })
-    .then(res => res.json())
+    .then(response => response.json())
     .catch((error) => {
       return {
         id: shortid.generate(),
