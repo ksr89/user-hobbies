@@ -36,7 +36,7 @@ export const addUserHobby = (userId: string, data: object) => {
     });
 };
 
-export const deleteUserHobby = (userId: string, hobbyId: object) => {
+export const deleteUserHobby = (userId: string, hobbyId: string) => {
   return fetch('/hobbies/' + userId + '/' + hobbyId, {
     method: 'DELETE'
   })

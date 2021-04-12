@@ -1,14 +1,24 @@
 import React from 'react';
 import { deleteUserHobby } from '../services/hobbies';
 
-const DeleteHobby = (props: any) => {
+import { HobbyModel } from '../models';
+
+type DeleteHobbyProps = {
+  selectedUser: string
+  selectedHobby: string
+  hobbiesList: HobbyModel[]
+  updateHobbiesList(data: HobbyModel[]): any
+}
+
+const DeleteHobby = (props: DeleteHobbyProps) => {
 
   const deleteHobbyHandler = () => {
-    deleteUserHobby(props.selectedUser, props.selectedHobby).then((data) => {
+    const { selectedUser, selectedHobby } = props;
+    deleteUserHobby(selectedUser, selectedHobby).then((data) => {
       let hobbiesList = props.hobbiesList;
 
       hobbiesList = hobbiesList.filter((hobby: any) => {
-        if(hobby.id !== data.id) {
+        if (hobby.id !== data.id) {
           return hobby
         }
       })

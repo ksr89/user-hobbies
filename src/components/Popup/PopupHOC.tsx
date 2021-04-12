@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 type PopupHOCProps = {
   children: any,
-  togglePopup: any,
-  currentPopup: any
+  togglePopup(id: string): any,
+  currentPopup: string
 }
 
 class PopupHOC extends Component<PopupHOCProps> {

@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 
 type PopupProps = {
-  className: any,
-  popupid: any,
+  className: string,
+  popupid: string,
   children: any,
-  closePopup?: any,
-  isSelected?: any,
+  closePopup?(id: string): any,
+  isSelected?(): boolean,
 }
 
 class Popup extends Component<PopupProps> {
   button: any = "";
-  isSelected: any = false;
 
   render() {
     const {
@@ -22,7 +21,7 @@ class Popup extends Component<PopupProps> {
 
     return (
       <div
-        className={`popup-container ${className} ${isSelected() && 'popup-show'}`}
+        className={`popup-container ${className} ${isSelected && isSelected() && 'popup-show'}`}
         role="dialog"
       >
         <div>
@@ -32,7 +31,7 @@ class Popup extends Component<PopupProps> {
             type="button"
             title="Close"
             className="popup-close"
-            onClick={() => { closePopup("-1"); }}
+            onClick={() => { closePopup && closePopup("-1"); }}
           >
             X
           </button>
