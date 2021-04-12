@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { getUsers, addUser } from '../services/users';
+import { UserModel } from '../models';
 
-const Users = (props: any) => {
+type UsersProps = {
+  usersList: UserModel[]
+  selectedUser: string
+  updateUsersList(data: UserModel[]): any
+  updateSelectedUser(userId: string): any
+}
+
+const Users = (props: UsersProps) => {
 
   const [newUserName, setNewUserName] = useState<string>('');
 
@@ -43,7 +51,7 @@ const Users = (props: any) => {
             props.usersList.map((user: any, index: any) => {
               return (
                 <li key={`user-${user.id}`}>
-                  <button onClick={() => { userSelectClickHandler(user.id) }} className={`${props.selectedUser === user.id ? 'selected': null}`}>
+                  <button onClick={() => { userSelectClickHandler(user.id) }} className={`${props.selectedUser === user.id ? 'selected' : null}`}>
                     <span>{user.name}</span>
                   </button>
                 </li>

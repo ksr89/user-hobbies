@@ -2,7 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { addUserHobby } from '../services/hobbies';
 import { getUserHobbies } from '../services/hobbies';
 
-const Hobbies = (props: any) => {
+import { HobbyModel } from '../models';
+
+type HobbiesProps = {
+  selectedUser: string
+  hobbiesList: HobbyModel[]
+  updateHobbiesList(data: HobbyModel[]): any
+  addNewHobby(data: HobbyModel[]): any
+  updateSelectedHobby(hobbyId: string): any
+}
+
+const Hobbies = (props: HobbiesProps) => {
 
   const [passionLevel, setPassionLevel] = useState('');
   const [hobby, setHobby] = useState('');
