@@ -7,5 +7,5 @@ export interface HobbyModel {
   id: string;
   passion: string;
   hobby: string;
-  year: string;
+  year: number;
 }
