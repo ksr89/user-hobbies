@@ -177,6 +177,11 @@
           margin: 0;
           padding: 50px 15px 30px 15px;
         }
+
+        button:last-child {
+          left: 226px;
+          position: relative;
+        }
       }
 
       >div {
@@ -190,18 +195,15 @@
           right: 4px;
           padding: 0;
           margin: 10px 10px 0 0;
-          height: 24.69px;
-          width: 24.69px;
+          height: 30px;
+          width: 30px;
           cursor: pointer;
           background: 0 0;
           border: none;
           font-size: 25px;
           color: #4c4c4c;
           z-index: 1;
-
-          &:hover {
-            color: #33251B;
-          }
+          line-height: 25px;
         }
       }
     }

@@ -33,7 +33,7 @@ class Popup extends Component<PopupProps> {
             className="popup-close"
             onClick={() => { closePopup && closePopup("-1"); }}
           >
-            X
+            &#10006;
           </button>
 
           {children}
